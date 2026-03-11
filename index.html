@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q04XKXKD2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9Q04XKXKD2');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a0a1a">
+
+<!-- ═══ SEO ═══ -->
+<title>SERPEX — Jeu de Serpent Multijoueur en Ligne | Gratuit</title>
+<meta name="description" content="Joue à SERPEX, le jeu de serpent multijoueur nouvelle génération ! Affronte des joueurs du monde entier, débloque des skins VIP, monte dans les classements. Gratuit sur navigateur.">
+<meta name="keywords" content="serpent jeu en ligne, snake game multijoueur, jeu serpent gratuit, slither io français, serpex, jeu navigateur multijoueur, snake io">
+<meta name="author" content="Serpex">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://serpex-game26.github.io/slither2026">
+
+<!-- ═══ Open Graph (Facebook, WhatsApp, Discord) ═══ -->
+<meta property="og:title" content="SERPEX — Jeu de Serpent Multijoueur">
+<meta property="og:description" content="Le jeu de serpent multijoueur nouvelle génération ! Affronte des joueurs du monde entier. Gratuit sur navigateur.">
+<meta property="og:url" content="https://serpex-game26.github.io/slither2026">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="SERPEX">
+
+<!-- ═══ Twitter Card ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SERPEX — Jeu de Serpent Multijoueur">
+<meta name="twitter:description" content="Le jeu de serpent multijoueur nouvelle génération ! Gratuit sur navigateur.">
+
+<!-- ═══ Données structurées Google ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "SERPEX",
+  "description": "Jeu de serpent multijoueur en ligne nouvelle génération",
+  "url": "https://serpex-game26.github.io/slither2026",
+  "genre": ["Action", "Multijoueur", "Arcade"],
+  "gamePlatform": "Navigateur Web",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Serpex"
+  }
+}
+<\/script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5433648295830648"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════ AUTH SCREEN ═══════════════ -->
+<div class="screen active" id="authScreen">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <div class="logo" style="font-size:clamp(2rem,8vw,3.5rem);">SERPEX</div>
+    <div class="subtitle" style="margin-bottom:0;">⚡ CRÉEZ VOTRE COMPTE ⚡</div>
+  </div>
+
+  <div class="auth-box">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">CONNEXION</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">INSCRIPTION</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="formLogin">
+      <div class="auth-field">
+        <label>Pseudo</label>
+        <input type="text" id="loginUser" placeholder="Ton pseudo..." autocomplete="username">
+      </div>
+      <div class="auth-field">
+        <label>Mot de passe</label>
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <div class="auth-error" id="loginError"></div>
+      <button class="btn-auth" onclick="doLogin()">⚡ CONNEXION</button>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="formRegister" style="display:none;">
+      <div class="auth-field">
+        <label>Pseudo (3-16 caractères)</label>
+        <input type="text" id="regUser" placeholder="Choisis un pseudo..." maxlength="16" autocomplete="username">
+      </div>
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="regEmail" placeholder="ton@email.com" autocomplete="email">
+      </div>
+      <div class="auth-field">
+        <label>Mot de passe (min 6 caractères)</label>
+        <input type="password" id="regPass" placeholder="Min. 6 caractères..." autocomplete="new-password">
+      </div>
+      <div class="auth-field">
+        <label>Confirmer MDP</label>
+        <input type="password" id="regPass2" placeholder="Confirmer..." autocomplete="new-password">
+      </div>
+      <div class="auth-error" id="regError"></div>
+      <button class="btn-auth" style="background:linear-gradient(135deg,var(--neon-pink),#8b0000);box-shadow:var(--glow-pink);color:white;" onclick="doRegister()">🎮 CRÉER MON COMPTE</button>
+    </div>
+  </div>
+
+  <!-- Séparateur -->
+  <div style="display:flex;align-items:center;gap:0.7rem;width:min(340px,88vw);margin:0.8rem 0;">
+    <div style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></div>
+    <div style="font-size:0.55rem;color:rgba(255,255,255,0.25);font-family:'Orbitron',monospace;letter-spacing:0.1em;">OU</div>
+    <div style="flex:1;height:1px;background:rgba(255,255,255,0.1);"></div>
+  </div>
+
+  <!-- Bouton invité -->
+  <button onclick="playAsGuest()" style="width:min(340px,88vw);padding:0.65rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:12px;font-family:'Orbitron',monospace;font-size:0.7rem;color:rgba(255,255,255,0.5);cursor:pointer;letter-spacing:0.05em;">
+    👻 JOUER EN INVITÉ
+  </button>
+  <div style="font-size:0.48rem;color:rgba(255,255,255,0.2);margin-top:0.4rem;text-align:center;font-family:'Exo 2';">Aucune sauvegarde — progression perdue à la fermeture</div>
+</div>
+
+<!-- ═══════════════ ADMIN PANEL ═══════════════ -->
+<div class="screen" id="adminPanel">
+  <div class="admin-header">
+    <div class="admin-title">👑 ADMIN</div>
+    <button class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.7rem;" onclick="showScreen('menu')">← MENU</button>
+  </div>
+
+  <div class="admin-stats">
+    <div class="stat-box"><div class="val" id="adTotal">0</div><div class="lbl">Joueurs</div></div>
+    <div class="stat-box"><div class="val" id="adOnline" style="color:var(--neon-green)">1</div><div class="lbl">En ligne</div></div>
+    <div class="stat-box"><div class="val" id="adGames">0</div><div class="lbl">Parties</div></div>
+  </div>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>PSEUDO</th>
+        <th>RÔLE</th>
+        <th>SCORE MAX</th>
+        <th>KILLS</th>
+        <th>COINS</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody id="adminTableBody"></tbody>
+  </table>
+  <button class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.7rem;" onclick="showScreen('menu')">← RETOUR AU JEU</button>
+</div>
+
+<!-- ═══════════════ MENU ═══════════════ -->
+<div class="screen" id="menu">
+
+  <!-- ── HEADER ── -->
+  <div style="display:flex;justify-content:space-between;align-items:center;width:min(420px,95vw);margin-bottom:0.4rem;">
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00f5ff33,#bf00ff33);border:1px solid #00f5ff55;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">👤</div>
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:#fff;font-weight:700;" id="menuPseudo">Joueur</div>
+        <div style="font-size:0.5rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">SERPEX PLAYER</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.3rem;align-items:center;">
+      <button id="adminBtn" style="display:none;background:rgba(255,0,110,0.15);border:1px solid var(--neon-pink);color:var(--neon-pink);font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:6px;cursor:pointer;font-family:'Orbitron',monospace;" onclick="showAdminPanel()">👑 ADMIN</button>
+      <button onclick="doLogout()" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:6px;cursor:pointer;font-family:'Orbitron',monospace;">🚪 EXIT</button>
+    </div>
+  </div>
+
+  <!-- ── LOGO ── -->
+  <div class="logo" style="font-size:clamp(2.2rem,11vw,3.8rem);margin-bottom:0rem;line-height:1;">SERPEX</div>
+  <div class="subtitle" style="margin-bottom:0.7rem;font-size:0.6rem;letter-spacing:0.3em;">⚡ NEXT GEN ARENA ⚡</div>
+
+  <!-- ── STATS 3 COLONNES ── -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;width:min(420px,95vw);margin-bottom:0.5rem;">
+    <div style="background:linear-gradient(135deg,rgba(0,245,255,0.08),rgba(0,245,255,0.03));border:1px solid rgba(0,245,255,0.2);border-radius:10px;padding:0.5rem 0.3rem;text-align:center;">
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:#00f5ff;text-shadow:0 0 10px #00f5ff88;" id="menuBest">0</div>
+      <div style="font-size:0.42rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;margin-top:2px;">🏆 RECORD</div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(255,0,110,0.08),rgba(255,0,110,0.03));border:1px solid rgba(255,0,110,0.2);border-radius:10px;padding:0.5rem 0.3rem;text-align:center;">
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:#ff006e;text-shadow:0 0 10px #ff006e88;" id="menuKills">0</div>
+      <div style="font-size:0.42rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;margin-top:2px;">💀 KILLS</div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.03));border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:0.5rem 0.3rem;text-align:center;">
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:#ffd700;text-shadow:0 0 10px #ffd70088;" id="menuCoins">0</div>
+      <div style="font-size:0.42rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;margin-top:2px;">🪙 COINS</div>
+    </div>
+  </div>
+
+  <!-- ── XP + SAISON côte à côte ── -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;width:min(420px,95vw);margin-bottom:0.5rem;">
+    <!-- XP -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,165,0,0.25);border-radius:10px;padding:0.45rem 0.6rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+        <span style="font-family:'Orbitron',monospace;font-size:0.6rem;color:#ff8800;font-weight:700;">⚔️ LVL <span id="menuLevel">1</span></span>
+        <span style="font-size:0.45rem;color:rgba(255,255,255,0.35);"><span id="menuXP">0</span>/<span id="menuXPNext">150</span></span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div id="menuXPBar" style="height:100%;width:0%;background:linear-gradient(90deg,#ff8800,#ffd700);border-radius:2px;transition:width 0.5s;"></div>
+      </div>
+    </div>
+    <!-- SAISON -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(191,0,255,0.25);border-radius:10px;padding:0.45rem 0.6rem;cursor:pointer;" onclick="showScreen('seasonScreen')">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+        <span style="font-family:'Orbitron',monospace;font-size:0.6rem;color:#bf00ff;font-weight:700;">🌟 <span id="menuSeasonNum">S1</span> LVL <span id="menuSeasonLevel">1</span></span>
+        <span style="font-size:0.45rem;color:rgba(255,255,255,0.35);" id="menuSeasonTimer">...</span>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+        <div id="menuSeasonBar" style="height:100%;width:0%;background:linear-gradient(90deg,#bf00ff,#ff006e);border-radius:2px;transition:width 0.5s;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── JOUER ── -->
+  <div style="width:min(420px,95vw);margin-bottom:0.4rem;">
+    <div style="font-family:'Orbitron',monospace;font-size:0.45rem;color:rgba(255,255,255,0.25);letter-spacing:0.25em;margin-bottom:0.3rem;text-align:center;">▸ JOUER</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;">
+      <button onclick="showBuildScreen('normal')" style="font-family:'Orbitron',monospace;font-size:0.65rem;padding:0.6rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid #00f5ff;background:linear-gradient(135deg,rgba(0,245,255,0.18),rgba(0,245,255,0.05));color:#00f5ff;font-weight:700;letter-spacing:0.05em;">⚡<br>MULTI</button>
+      <button onclick="showBuildScreen('solo')" style="font-family:'Orbitron',monospace;font-size:0.65rem;padding:0.6rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.8);font-weight:700;letter-spacing:0.05em;">🤖<br>SOLO</button>
+      <button onclick="startBattleRoyale()" style="font-family:'Orbitron',monospace;font-size:0.65rem;padding:0.6rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid #ff006e;background:linear-gradient(135deg,rgba(255,0,110,0.25),rgba(136,0,34,0.3));color:#ff6699;font-weight:700;letter-spacing:0.05em;">⚔️<br>BATTLE</button>
+    </div>
+  </div>
+
+  <!-- ── MON PROFIL ── -->
+  <div style="width:min(420px,95vw);margin-bottom:0.4rem;">
+    <div style="font-family:'Orbitron',monospace;font-size:0.45rem;color:rgba(255,255,255,0.25);letter-spacing:0.25em;margin-bottom:0.3rem;text-align:center;">▸ MON PROFIL</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-bottom:0.4rem;">
+      <button onclick="showSkinScreen()" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(0,245,255,0.35);background:linear-gradient(135deg,rgba(0,245,255,0.1),rgba(191,0,255,0.08));color:#00f5ff;">🎨 MES SKINS</button>
+      <button onclick="showScreen('accessoryScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,0,110,0.35);background:linear-gradient(135deg,rgba(255,0,110,0.1),rgba(191,0,255,0.08));color:#ff66aa;">💎 ACCESSOIRES</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;">
+      <button onclick="showStatsScreen()" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(0,229,255,0.25);background:rgba(0,229,255,0.06);color:#00e5ff;">📊<br>STATS</button>
+      <button onclick="openDailyReward()" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,136,0,0.35);background:rgba(255,136,0,0.08);color:#ff8800;">🎁<br>DAILY</button>
+      <button onclick="showFriendsScreen()" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(57,255,20,0.3);background:rgba(57,255,20,0.06);color:#39ff14;">👥<br>AMIS</button>
+    </div>
+  </div>
+
+  <!-- ── SHOP & PROGRESSION ── -->
+  <div style="width:min(420px,95vw);margin-bottom:0.4rem;">
+    <div style="font-family:'Orbitron',monospace;font-size:0.45rem;color:rgba(255,255,255,0.25);letter-spacing:0.25em;margin-bottom:0.3rem;text-align:center;">▸ PROGRESSION</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;margin-bottom:0.4rem;">
+      <button onclick="showScreen('shop')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.75);">🛒<br>SHOP</button>
+      <button onclick="showTop100()" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,215,0,0.3);background:rgba(255,215,0,0.06);color:#ffd700;">🥇<br>TOP 100</button>
+      <button onclick="showScreen('seasonScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.5rem 0.2rem;border-radius:10px;cursor:pointer;border:1px solid rgba(191,0,255,0.3);background:rgba(191,0,255,0.06);color:#bf00ff;">🌟<br>SAISON</button>
+    </div>
+    <!-- VIP full width -->
+    <button onclick="showScreen('vipScreen')" style="width:100%;font-family:'Orbitron',monospace;font-size:0.68rem;padding:0.6rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,215,0,0.4);background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,140,0,0.08));color:#ffd700;letter-spacing:0.08em;">👑 VIP — AVANTAGES EXCLUSIFS</button>
+  </div>
+
+  <!-- ── AMIS EN LIGNE ── -->
+  <div id="friendsOnline" style="font-size:0.6rem;color:rgba(57,255,20,0.8);min-height:0.8rem;text-align:center;margin-bottom:0.3rem;"></div>
+
+  <!-- ── SECTION INFO ── -->
+  <div style="width:min(420px,95vw);margin-bottom:0.4rem;">
+    <div style="font-family:'Orbitron',monospace;font-size:0.45rem;color:rgba(255,255,255,0.25);letter-spacing:0.25em;margin-bottom:0.3rem;text-align:center;">▸ INFORMATIONS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-bottom:0.4rem;">
+      <button onclick="showScreen('aboutScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(191,0,255,0.35);background:linear-gradient(135deg,rgba(191,0,255,0.1),rgba(191,0,255,0.04));color:#bf00ff;display:flex;align-items:center;justify-content:center;gap:0.3rem;">🐍 À PROPOS</button>
+      <button onclick="showScreen('contactScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,0,110,0.35);background:linear-gradient(135deg,rgba(255,0,110,0.1),rgba(255,0,110,0.04));color:#ff006e;display:flex;align-items:center;justify-content:center;gap:0.3rem;">📬 CONTACT</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+      <button onclick="showScreen('privacyScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(0,245,255,0.25);background:linear-gradient(135deg,rgba(0,245,255,0.06),rgba(0,245,255,0.02));color:#00f5ff;display:flex;align-items:center;justify-content:center;gap:0.3rem;">🔒 CONFIDENTIALITÉ</button>
+      <button onclick="showScreen('legalScreen')" style="font-family:'Orbitron',monospace;font-size:0.6rem;padding:0.55rem;border-radius:10px;cursor:pointer;border:1px solid rgba(255,215,0,0.25);background:linear-gradient(135deg,rgba(255,215,0,0.06),rgba(255,215,0,0.02));color:#ffd700;display:flex;align-items:center;justify-content:center;gap:0.3rem;">⚖️ MENTIONS LÉGALES</button>
+    </div>
+  </div>
+
+  <!-- ── BUG REPORT ── -->
+  <button onclick="reportBug()" style="width:min(420px,95vw);background:rgba(255,60,60,0.05);border:1px solid rgba(255,60,60,0.15);color:rgba(255,100,100,0.4);font-family:'Orbitron',monospace;font-size:0.5rem;padding:0.3rem;border-radius:8px;cursor:pointer;letter-spacing:0.05em;margin-bottom:0.5rem;">🐛 SIGNALER UN BUG</button>
+
+  <!-- ── FOOTER ADSENSE PERMANENT ── -->
+  <div style="width:min(420px,95vw);margin-top:0.6rem;padding:0.6rem 0;border-top:1px solid rgba(255,255,255,0.06);text-align:center;display:flex;flex-direction:column;gap:0.3rem;">
+    <div style="font-size:0.4rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;">
+      © 2026 SERPEX · serpex-game26.github.io · Google AdSense ca-pub-5433648295830648
+    </div>
+    <div style="display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;">
+      <button onclick="showScreen('privacyScreen')" style="background:none;border:none;color:rgba(0,245,255,0.5);cursor:pointer;font-size:0.45rem;text-decoration:underline;font-family:'Orbitron',monospace;padding:0;">🔒 Politique de confidentialité</button>
+      <button onclick="showScreen('legalScreen')" style="background:none;border:none;color:rgba(255,215,0,0.4);cursor:pointer;font-size:0.45rem;text-decoration:underline;font-family:'Orbitron',monospace;padding:0;">⚖️ Mentions légales</button>
+      <button onclick="showScreen('contactScreen')" style="background:none;border:none;color:rgba(255,0,110,0.4);cursor:pointer;font-size:0.45rem;text-decoration:underline;font-family:'Orbitron',monospace;padding:0;">📬 Contact</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ ACCESSORY SCREEN ═══════════════ -->
+<div class="screen" id="accessoryScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.5rem 0.8rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,0,110,0.2);flex-shrink:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.65rem;" onclick="showScreen('menu')">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#ff006e;">🎨 ACCESSOIRES</div>
+      <div id="accSlotsDisplay" style="font-size:0.65rem;color:rgba(255,255,255,0.5);font-family:'Orbitron',monospace;"></div>
+    </div>
+  </div>
+  <div style="width:100%;max-width:420px;margin:0 auto;padding:0.5rem 0.6rem 4rem;">
+    <div style="background:rgba(255,0,110,0.07);border:1px solid rgba(255,0,110,0.2);border-radius:10px;padding:0.5rem;margin-bottom:0.5rem;">
+      <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:#ff006e;margin-bottom:0.35rem;text-align:center;">⚔️ ÉQUIPÉS (1 PAR TYPE)</div>
+      <div id="equippedSlots" style="display:flex;gap:0.4rem;justify-content:center;flex-wrap:wrap;min-height:1.8rem;"></div>
+    </div>
+    <div id="accTypeFilter" style="display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;justify-content:center;"></div>
+    <div id="accGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ VIP SCREEN ═══════════════ -->
+<div class="screen" id="vipScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.5rem 0.8rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,215,0,0.2);flex-shrink:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.65rem;" onclick="showScreen('menu')">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:#ffd700;">👑 VIP</div>
+      <div id="vipCurrentBadge" style="font-size:0.65rem;color:#ffd700;font-family:'Orbitron',monospace;"></div>
+    </div>
+  </div>
+  <div style="width:100%;max-width:420px;margin:0 auto;padding:0.5rem 0.6rem 4rem;">
+    <div id="vipStatusBar" style="background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,140,0,0.08));border:1px solid rgba(255,215,0,0.25);border-radius:10px;padding:0.5rem 0.7rem;text-align:center;margin-bottom:0.5rem;">
+      <div id="vipStatusText" style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;"></div>
+      <div id="vipCoinsInfo" style="font-size:0.58rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;"></div>
+    </div>
+    <div id="vipCards" style="display:flex;flex-direction:column;gap:0.5rem;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ TOP 100 ═══════════════ -->
+<div class="screen" id="top100Screen">
+  <!-- Header sticky -->
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.8rem 1rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,215,0,0.2);display:flex;align-items:center;justify-content:space-between;">
+    <button class="btn btn-secondary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="showScreen('menu')">← MENU</button>
+    <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#ffd700;letter-spacing:0.1em;">🏆 TOP 100</div>
+    <button class="btn btn-secondary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="showTop100()">🔄</button>
+  </div>
+  <!-- Liste scrollable -->
+  <div style="width:100%;max-width:480px;flex:1;overflow-y:auto;padding:0.5rem 0.5rem 4rem;" id="top100List">
+    <div style="color:rgba(255,255,255,0.4);text-align:center;padding:2rem;">Chargement...</div>
+  </div>
+</div>
+
+<!-- ═══════════════ SAISON / BATTLE PASS ═══════════════ -->
+<div class="screen" id="seasonScreen">
+  <!-- Hero -->
+  <div class="season-hero">
+    <div class="season-title" id="seasonTitleDisplay">⚡ SAISON 1 — NEON STORM</div>
+    <div class="season-timer">⏳ Fin de saison : <span id="seasonCountdown">...</span></div>
+    <div class="season-xp-bar-container">
+      <div class="season-xp-header">
+        <span class="season-level-badge">🌟 NIVEAU <span id="seasonLevelDisplay">1</span></span>
+        <span class="season-xp-text"><span id="seasonXPDisplay">0</span> / <span id="seasonXPNextDisplay">500</span> XP</span>
+      </div>
+      <div class="season-xp-bg">
+        <div class="season-xp-fill" id="seasonXPBar" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu scrollable -->
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;padding:1rem 0 5rem;">
+
+    <div class="bp-track">
+      <div class="bp-track-title">🎁 RÉCOMPENSES DE SAISON</div>
+      <div id="bpTrackList"></div>
+    </div>
+
+  </div>
+
+  <!-- Bouton retour sticky bas -->
+  <div style="position:sticky;bottom:0;width:100%;background:rgba(5,5,15,0.95);padding:0.8rem 1rem;backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.08);">
+    <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem;" onclick="showBuildScreen('normal')">⚡ JOUER</button>
+    <button class="btn btn-secondary" style="width:100%;" onclick="showScreen('menu')">← RETOUR AU MENU</button>
+  </div>
+</div>
+
+<!-- ═══════════════ BUILD SELECTION ═══════════════ -->
+<div class="screen" id="buildScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.95);width:100%;padding:0.8rem 1rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:var(--neon-cyan);text-align:center;text-shadow:var(--glow-cyan);">⚔️ CHOISIR TON BUILD</div>
+    <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-align:center;margin-top:0.2rem;">Sélectionne 3 compétences</div>
+  </div>
+
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;padding:1rem 1rem 2rem;">
+    <!-- Slots sélectionnés -->
+    <div class="build-slots" id="buildSlots">
+      <div class="build-slot" id="slot0"><span style="font-size:1.4rem;opacity:0.3">?</span><span class="bs-label">SKILL 1</span></div>
+      <div class="build-slot" id="slot1"><span style="font-size:1.4rem;opacity:0.3">?</span><span class="bs-label">SKILL 2</span></div>
+      <div class="build-slot" id="slot2"><span style="font-size:1.4rem;opacity:0.3">?</span><span class="bs-label">SKILL 3</span></div>
+    </div>
+
+    <!-- Bouton jouer -->
+    <button class="btn btn-primary" id="buildPlayBtn" onclick="launchWithBuild()" style="width:min(420px,95vw);margin-bottom:1.2rem;opacity:0.4;pointer-events:none;">⚡ JOUER</button>
+
+    <!-- Grille des skills -->
+    <div class="build-grid" id="buildGrid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ LOBBY ═══════════════ -->
+<div class="screen" id="lobbyScreen">
+  <div class="lobby-header">
+    <div class="lobby-title" id="lobbyTitle">🎮 SALLE D'ATTENTE</div>
+    <div class="lobby-countdown" id="lobbyCountdown">20</div>
+    <div class="lobby-status" id="lobbyStatus">Recherche de joueurs...</div>
+  </div>
+
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;padding:0.5rem 0 5rem;">
+    <!-- Compteur joueurs -->
+    <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;letter-spacing:0.2em;">
+      👥 <span id="lobbyPlayerCount">1</span>/<span id="lobbyMaxPlayers">100</span> JOUEURS &nbsp;•&nbsp; 🤖 <span id="lobbyBotCount">99</span> BOTS
+    </div>
+
+    <!-- Grille des 15 slots -->
+    <div class="lobby-slots" id="lobbySlots"></div>
+
+    <!-- Bouton annuler -->
+    <button class="btn btn-secondary" style="width:min(380px,90vw);margin-top:1rem;" onclick="cancelLobby()">✕ ANNULER</button>
+  </div>
+</div>
+
+<!-- ═══════════════ SHOP ═══════════════ -->
+<div class="screen" id="shop">
+  <!-- Header sticky -->
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.95);width:100%;display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <button class="btn btn-secondary" style="padding:0.4rem 1rem;font-size:0.7rem;" onclick="showScreen('menu')">← RETOUR</button>
+    <div class="shop-title" style="font-size:1rem;margin:0;">🛒 BOUTIQUE</div>
+    <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.6rem;border-color:#ffd700;color:#ffd700;" onclick="showScreen('vipScreen')">👑 VIP</button>
+    <div style="font-family:'Orbitron',monospace;font-size:0.8rem;color:var(--neon-gold);">💰 <span id="shopCoins">0</span></div>
+  </div>
+  <!-- Contenu scrollable -->
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;padding:1rem 1rem 6rem 1rem;">
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ GAME ═══════════════ -->
+<div class="screen" id="game">
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="hud">
+    <div class="hud-top">
+      <div class="score-panel">
+        <div class="score-lbl">SCORE</div>
+        <div class="score-val" id="hudScore">0</div>
+      </div>
+      <!-- Mini chrono Battle Royale centré -->
+      <div id="brChronoHUD">
+        <div id="brChronoTime">0:00</div>
+        <div id="brChronoSub">⚔️ BR &nbsp;·&nbsp; <span id="brChronoAlive">0</span> 👥</div>
+      </div>
+      <div class="rank-panel">
+        <div class="score-lbl">RANG</div>
+        <div class="rank-val" id="hudRank">#1</div>
+      </div>
+    </div>
+
+    <div class="leaderboard">
+      <div class="lb-header" id="lbHeader" onclick="toggleLeaderboard()">
+        <span>🏆 TOP</span>
+        <span class="lb-arrow">▼</span>
+      </div>
+      <div class="lb-top3" id="lbTop3"></div>
+      <div class="lb-extra" id="lbExtra"></div>
+    </div>
+
+    <div class="bonus-row" id="bonusRow"></div>
+    <div class="kill-feed" id="killFeed"></div>
+
+<!-- chat supprimé -->
+
+    <div class="power-bar-container">
+      <div class="power-lbl">ÉNERGIE ⚡</div>
+      <div class="power-bar-bg"><div class="power-bar-fill" id="powerBar" style="width:100%"></div></div>
+    </div>
+
+    <div class="minimap">
+      <canvas id="minimapCanvas"></canvas>
+    </div>
+
+    <!-- Joystick virtuel -->
+    <div id="joystickBase" style="position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.06);border:2px solid rgba(0,245,255,0.3);opacity:0;pointer-events:none;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;">
+      <div id="joystickThumb" style="width:36px;height:36px;border-radius:50%;background:rgba(0,245,255,0.5);border:2px solid #00f5ff;box-shadow:0 0 12px #00f5ff;transition:transform 0.05s;"></div>
+    </div>
+
+    <!-- Audio controls -->
+    <div style="position:absolute;top:8px;right:8px;display:flex;gap:6px;z-index:20;">
+      <button id="musicBtn" onclick="toggleMusic()" style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:white;font-size:0.55rem;padding:4px 8px;border-radius:8px;cursor:pointer;font-family:Orbitron,monospace;">🎵 ON</button>
+      <button id="sfxBtn" onclick="toggleSfx()" style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:white;font-size:0.55rem;padding:4px 8px;border-radius:8px;cursor:pointer;font-family:Orbitron,monospace;">🔊 ON</button>
+    </div>
+
+    <div class="controls-area">
+      <!-- Skill gauche (build slot 0) -->
+      <div class="skill-btn" id="skillBtn0" style="border-color:var(--neon-cyan);" ontouchstart="useSkill(0)" onclick="useSkill(0)">
+        <span id="skillIcon0">🛡️</span>
+        <div class="skill-cd" id="cd0" style="display:none"></div>
+        <div class="skill-label" id="skillLabel0" style="color:var(--neon-cyan)">SKILL</div>
+      </div>
+
+      <!-- Joystick zone (center) -->
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+        <div class="boost-btn" id="boostBtn">
+          <div class="icon">⚡</div>
+          BOOST
+        </div>
+        <div style="font-size:0.55rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;">GLISSE POUR DIRIGER</div>
+      </div>
+
+      <!-- Skills droite (build slots 1 & 2) -->
+      <div style="display:flex;flex-direction:column;gap:0.6rem;align-items:center;">
+        <div class="skill-btn" id="skillBtn1" style="border-color:var(--neon-gold);" ontouchstart="useSkill(1)" onclick="useSkill(1)">
+          <span id="skillIcon1">🧲</span>
+          <div class="skill-cd" id="cd1" style="display:none"></div>
+          <div class="skill-label" id="skillLabel1" style="color:var(--neon-gold)">SKILL</div>
+        </div>
+        <div class="skill-btn" id="skillBtn2" style="border-color:var(--neon-pink);width:48px;height:48px;" ontouchstart="useSkill(2)" onclick="useSkill(2)">
+          <span id="skillIcon2">💣</span>
+          <div class="skill-cd" id="cd2" style="display:none"></div>
+          <div class="skill-label" id="skillLabel2" style="color:var(--neon-pink)">SKILL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ GAME OVER ═══════════════ -->
+<div class="screen" id="gameover">
+  <div class="go-title" style="margin-bottom:0.2rem;">GAME OVER</div>
+  <div style="font-family:'Exo 2';color:rgba(255,255,255,0.5);margin-bottom:0.4rem;font-size:0.75rem;" id="goMsg">Éliminé !</div>
+  <div class="go-stats" style="margin-bottom:0.4rem;">
+    <div class="go-stat"><div class="v" id="goScore" style="color:var(--neon-cyan)">0</div><div class="l">Score</div></div>
+    <div class="go-stat"><div class="v" id="goKills" style="color:var(--neon-pink)">0</div><div class="l">Kills</div></div>
+    <div class="go-stat"><div class="v" id="goLength" style="color:var(--neon-green)">0</div><div class="l">Taille</div></div>
+    <div class="go-stat"><div class="v" id="goCoins" style="color:var(--neon-gold)">+0</div><div class="l">Coins</div></div>
+  </div>
+  <div id="goDetailStats" style="width:min(340px,92vw);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:0.5rem 0.8rem;margin-bottom:0.4rem;display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;font-size:0.6rem;font-family:'Exo 2',sans-serif;"></div>
+  <div id="goRankBlock" style="margin-bottom:0.4rem;text-align:center;"></div>
+  <div id="goAchievements" style="margin-bottom:0.3rem;text-align:center;"></div>
+  <!-- Bandeau invité -->
+  <div id="guestGameOverBanner" style="display:none;width:min(320px,88vw);background:linear-gradient(135deg,rgba(0,245,255,0.1),rgba(191,0,255,0.1));border:1px solid rgba(0,245,255,0.3);border-radius:12px;padding:0.7rem 0.8rem;margin-bottom:0.4rem;text-align:center;">
+    <div style="font-family:'Orbitron',monospace;font-size:0.62rem;color:#00f5ff;margin-bottom:0.3rem;">👻 MODE INVITÉ</div>
+    <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);margin-bottom:0.6rem;">Tu jouais contre des bots uniquement.<br>Crée un compte pour affronter de <strong style="color:#fff;">vrais joueurs</strong> et sauvegarder ta progression !</div>
+    <button onclick="guestMode=false;currentUser=null;showScreen('authScreen');" style="padding:0.45rem 1rem;background:linear-gradient(135deg,#00f5ff,#bf00ff);border:none;border-radius:8px;font-family:'Orbitron',monospace;font-size:0.6rem;font-weight:900;color:#000;cursor:pointer;">🎮 CRÉER UN COMPTE</button>
+  </div>
+  <div id="goXPBlock" style="margin-bottom:0.6rem;text-align:center;width:min(340px,92vw);"></div>
+  <div id="goButtons" style="display:flex;flex-direction:column;align-items:center;gap:0.35rem;width:min(300px,85vw);"></div>
+</div>
+
+<!-- ═══════════════ DAILY REWARD POPUP ═══════════════ -->
+<!-- ═══════════════ SHARE SCORE POPUP ═══════════════ -->
+<div id="sharePopup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);align-items:center;justify-content:center;flex-direction:column;">
+  <div style="background:linear-gradient(135deg,rgba(10,5,25,0.99),rgba(20,10,45,0.99));border:1.5px solid rgba(57,255,20,0.3);border-radius:20px;padding:1.4rem 1.2rem;width:min(340px,92vw);text-align:center;box-shadow:0 0 40px rgba(57,255,20,0.1);">
+    <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#39ff14;margin-bottom:0.2rem;">📤 PARTAGER MON SCORE</div>
+    <div id="shareScorePreview" style="background:linear-gradient(135deg,rgba(57,255,20,0.06),rgba(0,245,255,0.06));border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:0.8rem;margin:0.8rem 0;font-family:'Orbitron',monospace;">
+      <div style="font-size:1.6rem;color:#00f5ff;" id="shareScoreVal">0</div>
+      <div style="font-size:0.55rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">POINTS · SERPEX</div>
+      <div style="font-size:0.75rem;color:#ff006e;margin-top:0.3rem;" id="shareKillsVal">💀 0 kills</div>
+    </div>
+    <!-- Grille réseaux sociaux -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.7rem;">
+      <button onclick="doShare('whatsapp')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.4);color:#25d366;border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">💬</span> WhatsApp
+      </button>
+      <button onclick="doShare('snapchat')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,252,0,0.12);border:1px solid rgba(255,252,0,0.4);color:#fffc00;border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">👻</span> Snapchat
+      </button>
+      <button onclick="doShare('twitter')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">𝕏</span> X / Twitter
+      </button>
+      <button onclick="doShare('tiktok')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,0,80,0.12);border:1px solid rgba(255,0,80,0.4);color:#ff0050;border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">🎵</span> TikTok
+      </button>
+      <button onclick="doShare('telegram')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(0,136,204,0.12);border:1px solid rgba(0,136,204,0.4);color:#0088cc;border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">✈️</span> Telegram
+      </button>
+      <button onclick="doShare('copy')" style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:12px;padding:0.6rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.6rem;cursor:pointer;">
+        <span style="font-size:1.3rem;">📋</span> Copier
+      </button>
+    </div>
+    <button onclick="doShare('native')" style="width:100%;padding:0.55rem;background:linear-gradient(135deg,#39ff14,#00f5ff);border:none;border-radius:12px;font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:900;color:#000;cursor:pointer;margin-bottom:0.5rem;">⚡ PARTAGE RAPIDE</button>
+    <button onclick="document.getElementById('sharePopup').style.display='none'" style="background:transparent;border:none;color:rgba(255,255,255,0.25);font-size:0.58rem;cursor:pointer;font-family:'Exo 2';">Fermer</button>
+  </div>
+</div>
+
+<div id="dailyRewardPopup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column;">
+  <div style="background:linear-gradient(135deg,rgba(15,5,30,0.99),rgba(25,10,50,0.99));border:2px solid #ffd700;border-radius:20px;padding:1.4rem 1.2rem;width:min(350px,92vw);text-align:center;box-shadow:0 0 40px rgba(255,215,0,0.25);">
+    <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#ffd700;margin-bottom:0.2rem;">🎁 RÉCOMPENSE DU JOUR</div>
+    <div style="font-size:0.62rem;color:rgba(255,255,255,0.4);margin-bottom:0.8rem;" id="drStreak">🔥 Jour 1</div>
+    <div id="drCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.25rem;margin-bottom:0.8rem;"></div>
+    <div style="background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.35);border-radius:12px;padding:0.7rem;margin-bottom:0.8rem;">
+      <div style="font-size:2.2rem;" id="drEmoji">🪙</div>
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:#ffd700;margin-top:0.2rem;" id="drAmount">+100 Coins</div>
+      <div style="font-size:0.58rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;" id="drBonus"></div>
+    </div>
+    <button onclick="claimDailyReward()" id="drClaimBtn" style="width:100%;padding:0.65rem;background:linear-gradient(135deg,#ffd700,#ff8800);border:none;border-radius:12px;font-family:'Orbitron',monospace;font-size:0.78rem;font-weight:900;color:#000;cursor:pointer;">✅ RÉCUPÉRER</button>
+    <button onclick="document.getElementById('dailyRewardPopup').style.display='none'" style="margin-top:0.5rem;background:transparent;border:none;color:rgba(255,255,255,0.25);font-size:0.58rem;cursor:pointer;font-family:'Exo 2';">Plus tard</button>
+  </div>
+</div>
+
+<!-- ═══════════════ FRIENDS SCREEN ═══════════════ -->
+<div class="screen" id="friendsScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.5rem 0.8rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(57,255,20,0.2);flex-shrink:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.65rem;" onclick="showScreen('menu')">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#39ff14;">👥 AMIS</div>
+      <div id="friendsOnlineCount" style="font-size:0.6rem;color:#39ff14;font-family:'Orbitron',monospace;"></div>
+    </div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;width:100%;padding:0.5rem 0.6rem 5rem;">
+    <div style="max-width:420px;margin:0 auto;">
+      <div style="background:rgba(57,255,20,0.05);border:1px solid rgba(57,255,20,0.15);border-radius:10px;padding:0.6rem;margin-bottom:0.6rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.58rem;color:#39ff14;margin-bottom:0.35rem;">➕ AJOUTER UN AMI</div>
+        <div style="display:flex;gap:0.4rem;">
+          <input id="friendSearchInput" placeholder="Pseudo exact..." style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:0.4rem 0.6rem;color:#fff;font-size:0.7rem;font-family:'Exo 2',sans-serif;" />
+          <button onclick="sendFriendRequest()" style="background:rgba(57,255,20,0.12);border:1px solid #39ff14;color:#39ff14;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.62rem;font-family:'Orbitron',monospace;cursor:pointer;white-space:nowrap;">ENVOYER</button>
+        </div>
+      </div>
+      <div id="friendRequests" style="margin-bottom:0.5rem;"></div>
+      <div style="font-family:'Orbitron',monospace;font-size:0.52rem;color:rgba(255,255,255,0.25);margin-bottom:0.35rem;letter-spacing:0.1em;">MES AMIS</div>
+      <div id="friendsList"><div style="text-align:center;color:rgba(255,255,255,0.2);font-size:0.65rem;padding:1.5rem;">Chargement...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ TOURNAMENT SCREEN ═══════════════ -->
+<div class="screen" id="tournamentScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.5rem 0.8rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,215,0,0.2);flex-shrink:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.65rem;" onclick="showScreen('menu')">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#ffd700;">🏆 TOURNOIS</div>
+      <button onclick="renderTournamentScreen()" style="background:transparent;border:none;color:rgba(255,255,255,0.3);font-size:0.9rem;cursor:pointer;">🔄</button>
+    </div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;width:100%;padding:0.5rem 0.6rem 5rem;">
+    <div style="max-width:420px;margin:0 auto;" id="tournamentContent">
+      <div style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Chargement...</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ STATS SCREEN ═══════════════ -->
+<div class="screen" id="statsScreen">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(5,5,15,0.97);width:100%;padding:0.5rem 0.8rem;backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,229,255,0.2);flex-shrink:0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.65rem;" onclick="showScreen('menu')">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#00e5ff;">📊 MES STATS</div>
+      <div style="width:2.5rem;"></div>
+    </div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;width:100%;padding:0.5rem 0.6rem 5rem;">
+    <div style="max-width:420px;margin:0 auto;" id="statsContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ CHAT OVERLAY ═══════════════ -->
+<div id="chatOverlay" style="display:none;position:fixed;bottom:4.5rem;left:0.5rem;z-index:500;width:min(240px,55vw);">
+<!-- chatInput supprimé -->
+</div>
+<button id="chatToggleBtn" style="display:none;position:fixed;bottom:4.5rem;left:0.5rem;z-index:501;background:rgba(0,245,255,0.12);border:1px solid var(--neon-cyan);border-radius:50%;width:2rem;height:2rem;color:var(--neon-cyan);font-size:0.85rem;cursor:pointer;align-items:center;justify-content:center;" onclick="toggleChatOverlay()">💬</button>
+<script src="game.js"></script>
+
+<script src="daily.js"></script>
+
+<!-- ═══════════════ OVERLAY PUBLICITÉ ═══════════════ -->
+<div id="adOverlay" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.96);flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(10px);">
+  <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);margin-bottom:1rem;letter-spacing:0.3em;">📢 MESSAGE DE NOS PARTENAIRES</div>
+
+  <!-- Bannière AdSense -->
+  <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(0,245,255,0.2);border-radius:12px;padding:0.5rem;min-width:300px;min-height:250px;display:flex;align-items:center;justify-content:center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5433648295830648"
+         data-ad-slot="5101438658"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- Compte à rebours + bouton -->
+  <div style="margin-top:1.2rem;text-align:center;">
+    <div id="adCountdown" style="font-family:'Orbitron',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:0.8rem;">
+      Fermeture dans <span id="adTimer">5</span>s...
+    </div>
+    <button id="adCloseBtn" onclick="closeAdAndRestart()"
+            style="display:none;padding:0.9rem 2.5rem;background:linear-gradient(135deg,#00f5ff,#0066ff);border:none;border-radius:50px;font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:900;color:#000;cursor:pointer;box-shadow:0 0 20px #00f5ff88;">
+      ▶ JOUER
+    </button>
+  </div>
+</div>
+
+
+<!-- ═══════════════ MES SKINS ═══════════════ -->
+<div id="skinScreen" class="screen" style="padding:1rem;max-width:500px;margin:0 auto;overflow-y:auto;justify-content:flex-start;align-items:stretch;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+    <button class="btn btn-secondary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="showScreen('menu')">← MENU</button>
+    <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:#00f5ff;letter-spacing:0.15em;">🎨 MES SKINS</div>
+    <div style="width:60px;"></div>
+  </div>
+  <div id="skinScreenContent"></div>
+</div>
+
+
+<!-- ═══════════════ POLITIQUE DE CONFIDENTIALITÉ ═══════════════ -->
+<div class="screen" id="privacyScreen" style="overflow-y:auto;justify-content:flex-start;align-items:center;padding:1rem;background:linear-gradient(180deg,#05050f,#0a0a1a);">
+  <div style="width:min(480px,95vw);padding-bottom:2rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:linear-gradient(180deg,#05050f 80%,transparent);padding:0.5rem 0;z-index:10;">
+      <button onclick="showScreen('menu')" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:0.65rem;padding:0.4rem 0.9rem;border-radius:8px;cursor:pointer;font-family:'Orbitron',monospace;">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#00f5ff;letter-spacing:0.15em;">🔒 CONFIDENTIALITÉ</div>
+      <div style="width:70px;"></div>
+    </div>
+
+    <div style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:0.3rem;">Politique de confidentialité</div>
+    <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;">Dernière mise à jour : mars 2026 · serpex-game26.github.io</div>
+
+    <div style="font-size:0.72rem;color:rgba(255,255,255,0.75);line-height:1.7;display:flex;flex-direction:column;gap:1.2rem;">
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">1. Qui sommes-nous ?</div>
+        <p>SERPEX est un jeu en ligne gratuit disponible sur <strong>serpex-game26.github.io</strong>. Ce site est un projet indépendant à but non lucratif.</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">2. Données collectées</div>
+        <p>Lors de la création d'un compte, nous collectons :</p>
+        <ul style="margin-top:0.4rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.3rem;">
+          <li>Adresse e-mail (utilisée uniquement pour l'authentification)</li>
+          <li>Pseudo choisi par le joueur</li>
+          <li>Données de jeu : score, kills, coins, skins débloqués</li>
+        </ul>
+        <p style="margin-top:0.5rem;">Ces données sont stockées de façon sécurisée via <strong>Supabase</strong> (conforme RGPD).</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">3. Publicités (Google AdSense)</div>
+        <p>Ce site utilise <strong>Google AdSense</strong> (ID éditeur : pub-5433648295830648) pour diffuser des publicités. Google peut utiliser des cookies pour personnaliser les annonces en fonction de tes visites.</p>
+        <p style="margin-top:0.5rem;">Tu peux gérer tes préférences publicitaires sur : <a href="https://adssettings.google.com" target="_blank" style="color:#00f5ff;">adssettings.google.com</a></p>
+        <ul style="margin-top:0.5rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.3rem;font-size:0.68rem;color:rgba(255,255,255,0.65);">
+          <li>Politique publicitaire Google : <a href="https://policies.google.com/technologies/ads" target="_blank" style="color:#00f5ff;">policies.google.com/technologies/ads</a></li>
+          <li>Désactiver les annonces : <a href="https://www.google.com/settings/ads" target="_blank" style="color:#00f5ff;">google.com/settings/ads</a></li>
+          <li>Aide AdSense : <a href="https://support.google.com/adsense" target="_blank" style="color:#00f5ff;">support.google.com/adsense</a></li>
+        </ul>
+        <p style="margin-top:0.5rem;font-size:0.65rem;color:rgba(255,255,255,0.45);">Éditeur AdSense : <strong style="color:#fff;">ca-pub-5433648295830648</strong></p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">4. Cookies</div>
+        <p>Nous utilisons des cookies pour :</p>
+        <ul style="margin-top:0.4rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.3rem;">
+          <li>Maintenir ta session de jeu (authentification)</li>
+          <li>Sauvegarder tes préférences locales</li>
+          <li>Afficher des publicités via Google AdSense</li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">5. Partage des données</div>
+        <p>Nous ne vendons ni ne partageons tes données personnelles avec des tiers, à l'exception des services suivants nécessaires au fonctionnement du jeu :</p>
+        <ul style="margin-top:0.4rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.3rem;">
+          <li><strong>Supabase</strong> — base de données et authentification</li>
+          <li><strong>Google AdSense</strong> — publicités</li>
+          <li><strong>Google Analytics</strong> — statistiques de visite anonymisées</li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">6. Tes droits (RGPD)</div>
+        <p>Conformément au RGPD, tu as le droit d'accéder, modifier ou supprimer tes données. Pour exercer ces droits, contacte-nous via la page Contact.</p>
+        <p style="margin-top:0.5rem;">La suppression de compte efface définitivement toutes tes données de nos serveurs.</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00f5ff;margin-bottom:0.4rem;">7. Enfants</div>
+        <p>SERPEX est déconseillé aux enfants de moins de <strong style="color:#fff;">13 ans</strong> (loi américaine <strong style="color:#fff;">COPPA</strong>) et de moins de <strong style="color:#fff;">16 ans</strong> sans accord parental (règlement européen <strong style="color:#fff;">RGPD</strong>).</p>
+        <p style="margin-top:0.5rem;">Nous ne collectons pas sciemment de données d'enfants mineurs. Si tu es parent et penses que ton enfant a créé un compte, contacte-nous à <span style="color:#00f5ff;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68e839490838587968994878a83d7d1a6818b878f8ac885898b">[email&#160;protected]</a></span> pour supprimer ses données.</p>
+        <p style="margin-top:0.5rem;font-size:0.65rem;color:rgba(255,255,255,0.4);">Pour en savoir plus : <a href="https://www.cnil.fr" target="_blank" style="color:#00f5ff;">cnil.fr</a> (autorité française de protection des données).</p>
+      </div>
+
+      <div style="background:rgba(0,245,255,0.05);border:1px solid rgba(0,245,255,0.2);border-radius:10px;padding:0.8rem;margin-top:0.5rem;">
+        <p>Des questions ? Contacte-nous via la page <button onclick="showScreen('contactScreen')" style="background:none;border:none;color:#00f5ff;cursor:pointer;text-decoration:underline;font-size:0.72rem;">Contact</button>.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<div class="screen" id="contactScreen" style="overflow-y:auto;justify-content:flex-start;align-items:center;padding:1rem;background:linear-gradient(180deg,#05050f,#0a0a1a);">
+  <div style="width:min(480px,95vw);padding-bottom:2rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:linear-gradient(180deg,#05050f 80%,transparent);padding:0.5rem 0;z-index:10;">
+      <button onclick="showScreen('menu')" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:0.65rem;padding:0.4rem 0.9rem;border-radius:8px;cursor:pointer;font-family:'Orbitron',monospace;">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#ff006e;letter-spacing:0.15em;">📬 CONTACT</div>
+      <div style="width:70px;"></div>
+    </div>
+
+    <div style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:0.3rem;">Nous contacter</div>
+    <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;">serpex-game26.github.io</div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+
+      <div style="background:rgba(255,0,110,0.06);border:1px solid rgba(255,0,110,0.25);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#ff006e;margin-bottom:0.5rem;">✉️ E-MAIL</div>
+        <div style="font-size:0.8rem;color:#fff;font-weight:600;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f69e938480939597869984979a93c7c1b6919b979f9ad895999b">[email&#160;protected]</a></div>
+        <div style="font-size:0.55rem;color:rgba(255,255,255,0.35);margin-top:0.3rem;">Réponse sous 48-72h</div>
+      </div>
+
+      <div style="background:rgba(0,245,255,0.06);border:1px solid rgba(0,245,255,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00f5ff;margin-bottom:0.5rem;">🐛 BUG / PROBLÈME EN JEU</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);line-height:1.6;">Utilise le bouton <strong style="color:#fff;">🐛 Signaler un bug</strong> depuis le menu principal pour nous envoyer un rapport automatique.</div>
+      </div>
+
+      <div style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#ffd700;margin-bottom:0.5rem;">⚖️ DROITS & DONNÉES PERSONNELLES</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);line-height:1.6;">Pour toute demande concernant tes données personnelles (accès, modification, suppression), envoie-nous un e-mail avec l'objet <strong style="color:#fff;">"RGPD - [ton pseudo]"</strong>.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;">📍 ÉDITEUR</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);line-height:1.8;">
+          Site : serpex-game26.github.io<br>
+          Hébergement : GitHub Pages (Microsoft Corp.)<br>
+          Base de données : Supabase Inc.<br>
+          Pays : France 🇫🇷
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MENTIONS LÉGALES ═══════════════ -->
+<div class="screen" id="legalScreen" style="overflow-y:auto;justify-content:flex-start;align-items:center;padding:1rem;background:linear-gradient(180deg,#05050f,#0a0a1a);">
+  <div style="width:min(480px,95vw);padding-bottom:2rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:linear-gradient(180deg,#05050f 80%,transparent);padding:0.5rem 0;z-index:10;">
+      <button onclick="showScreen('menu')" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:0.65rem;padding:0.4rem 0.9rem;border-radius:8px;cursor:pointer;font-family:'Orbitron',monospace;">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#ffd700;letter-spacing:0.15em;">⚖️ MENTIONS LÉGALES</div>
+      <div style="width:70px;"></div>
+    </div>
+
+    <div style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:0.3rem;">Mentions légales</div>
+    <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;">Conformément à la loi française · mars 2026</div>
+
+    <div style="font-size:0.72rem;color:rgba(255,255,255,0.75);line-height:1.7;display:flex;flex-direction:column;gap:1.2rem;">
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Éditeur du site</div>
+        <div style="line-height:1.9;">
+          Nom du site : <strong style="color:#fff;">SERPEX</strong><br>
+          URL : <strong style="color:#fff;">serpex-game26.github.io</strong><br>
+          Nature : Site personnel / projet indépendant<br>
+          Pays : France 🇫🇷<br>
+          Contact : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="19717c6b6f7c7a7869766b78757c282e597e74787075377a7674">[email&#160;protected]</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Hébergement</div>
+        <div style="line-height:1.9;">
+          Hébergeur : <strong style="color:#fff;">GitHub Pages</strong><br>
+          Société : GitHub Inc. (filiale Microsoft Corporation)<br>
+          Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br>
+          Site : github.com
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Base de données</div>
+        <div style="line-height:1.9;">
+          Service : <strong style="color:#fff;">Supabase</strong><br>
+          Société : Supabase Inc.<br>
+          Données stockées : pseudos, scores, progression en jeu<br>
+          Conformité RGPD : oui
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Propriété intellectuelle</div>
+        <p>Le jeu SERPEX, son code source, ses graphismes et son contenu sont la propriété exclusive de leur auteur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Responsabilité</div>
+        <p>SERPEX est un jeu gratuit proposé sans garantie. L'éditeur ne peut être tenu responsable d'une interruption de service, d'une perte de données ou de tout dommage lié à l'utilisation du site.</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#ffd700;margin-bottom:0.4rem;">Droit applicable</div>
+        <p>Le présent site est soumis au droit français. Tout litige relatif à son utilisation sera soumis à la compétence des tribunaux français.</p>
+      </div>
+
+      <div style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:0.8rem;margin-top:0.5rem;">
+        Ces mentions légales ont été rédigées conformément aux articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 (LCEN).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ À PROPOS ═══════════════ -->
+<div class="screen" id="aboutScreen" style="overflow-y:auto;justify-content:flex-start;align-items:center;padding:1rem;background:linear-gradient(180deg,#05050f,#0a0a1a);">
+  <div style="width:min(480px,95vw);padding-bottom:2rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:linear-gradient(180deg,#05050f 80%,transparent);padding:0.5rem 0;z-index:10;">
+      <button onclick="showScreen('menu')" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:0.65rem;padding:0.4rem 0.9rem;border-radius:8px;cursor:pointer;font-family:'Orbitron',monospace;">← RETOUR</button>
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#bf00ff;letter-spacing:0.15em;">🐍 À PROPOS</div>
+      <div style="width:70px;"></div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;background:linear-gradient(135deg,#00f5ff,#bf00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.3rem;">SERPEX</div>
+      <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);letter-spacing:0.3em;">NEXT GEN SNAKE ARENA</div>
+    </div>
+
+    <div style="font-size:0.75rem;color:rgba(255,255,255,0.75);line-height:1.8;display:flex;flex-direction:column;gap:1rem;">
+
+      <div style="background:rgba(0,245,255,0.06);border:1px solid rgba(0,245,255,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00f5ff;margin-bottom:0.5rem;">🎮 LE JEU</div>
+        <p>SERPEX est un jeu de serpent multijoueur en ligne gratuit, jouable directement dans le navigateur sans installation. Affronte des joueurs du monde entier, grandis, élimine tes adversaires et grimpe dans le classement mondial !</p>
+      </div>
+
+      <div style="background:rgba(191,0,255,0.06);border:1px solid rgba(191,0,255,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#bf00ff;margin-bottom:0.5rem;">✨ FONCTIONNALITÉS</div>
+        <ul style="padding-left:1.2rem;display:flex;flex-direction:column;gap:0.4rem;">
+          <li>🌍 Multijoueur en temps réel</li>
+          <li>⚔️ Mode Battle Royale</li>
+          <li>🎨 Plus de 30 skins débloquables</li>
+          <li>👑 Système VIP & Battle Pass</li>
+          <li>🏆 Classement mondial Top 100</li>
+          <li>🎁 Récompenses quotidiennes</li>
+          <li>👥 Système d'amis en ligne</li>
+        </ul>
+      </div>
+
+      <div style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#ffd700;margin-bottom:0.5rem;">👨‍💻 CRÉATEUR</div>
+        <p>SERPEX est un projet indépendant créé avec passion. Le jeu est entièrement gratuit et accessible à tous sur navigateur mobile et desktop.</p>
+        <p style="margin-top:0.5rem;">Contact : <span style="color:#00f5ff;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335b564145565052435c41525f56020473545e525a5f1d505c5e">[email&#160;protected]</a></span></p>
+      </div>
+
+      <div style="background:rgba(255,0,110,0.06);border:1px solid rgba(255,0,110,0.2);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#ff006e;margin-bottom:0.5rem;">🔞 AVERTISSEMENT</div>
+        <p>SERPEX est déconseillé aux enfants de moins de <strong style="color:#fff;">13 ans</strong>. Le jeu contient de la compétition en ligne et des achats virtuels avec des coins gratuits.</p>
+        <p style="margin-top:0.5rem;color:rgba(255,255,255,0.5);font-size:0.65rem;">Le jeu ne contient pas de violence graphique ni de contenu inapproprié.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;">📱 COMPATIBILITÉ</div>
+        <p style="color:rgba(255,255,255,0.5);">Navigateur mobile ✓ &nbsp;·&nbsp; Desktop ✓ &nbsp;·&nbsp; Tablette ✓<br>Chrome, Firefox, Safari, Edge</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ BANDEAU COOKIE RGPD ═══════════════ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:linear-gradient(180deg,rgba(5,5,25,0.97),rgba(8,3,20,0.99));border-top:2px solid rgba(0,245,255,0.4);padding:1rem 1rem 1.2rem;backdrop-filter:blur(20px);box-shadow:0 -8px 40px rgba(0,245,255,0.1);">
+  <div style="max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:0.8rem;">
+
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(0,245,255,0.2),rgba(0,100,255,0.15));border:1px solid rgba(0,245,255,0.35);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🍪</div>
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00f5ff;font-weight:700;letter-spacing:0.1em;margin-bottom:0.15rem;">COOKIES & CONFIDENTIALITÉ</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.6);line-height:1.5;">
+          SERPEX utilise des cookies pour le jeu et des publicités <strong style="color:rgba(255,255,255,0.85);">Google AdSense</strong>.
+          <button onclick="showScreen('privacyScreen');hideCookieBanner();" style="background:none;border:none;color:#00f5ff;cursor:pointer;text-decoration:underline;font-size:0.62rem;padding:0;margin-left:2px;">En savoir plus</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+      <button onclick="refuseCookies()" style="padding:0.65rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:rgba(255,255,255,0.5);font-size:0.58rem;cursor:pointer;font-family:'Orbitron',monospace;letter-spacing:0.05em;">✕ REFUSER</button>
+      <button onclick="acceptCookies()" style="padding:0.65rem;background:linear-gradient(135deg,#00f5ff,#0055ff);border:none;border-radius:10px;color:#000;font-size:0.65rem;font-weight:900;cursor:pointer;font-family:'Orbitron',monospace;letter-spacing:0.05em;box-shadow:0 0 20px rgba(0,245,255,0.35);">✓ ACCEPTER</button>
+    </div>
+
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+// ── Cookie Consent ──
+function initCookieBanner() {
+  const consent = localStorage.getItem('serpex_cookie_consent');
+  if (!consent) {
+    setTimeout(() => {
+      document.getElementById('cookieBanner').style.display = 'block';
+    }, 1500);
+  }
+}
+
+function acceptCookies() {
+  localStorage.setItem('serpex_cookie_consent', 'accepted');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function refuseCookies() {
+  localStorage.setItem('serpex_cookie_consent', 'declined');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function hideCookieBanner() {
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+initCookieBanner();
+</script>
+</body>
+</html>
