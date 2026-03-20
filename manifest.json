@@ -1,0 +1,36 @@
+{
+  "name": "SERPEX — Jeu de Serpent Multijoueur",
+  "short_name": "SERPEX",
+  "description": "Le jeu de serpent multijoueur nouvelle génération ! Affronte des joueurs du monde entier.",
+  "start_url": "/serpex/",
+  "scope": "/serpex/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#05050f",
+  "theme_color": "#0a0a1a",
+  "lang": "fr",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "cover.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "SERPEX — Arène multijoueur"
+    }
+  ]
+}
