@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERPEX — Jeu de Serpent Multijoueur en Ligne Gratuit | Snake Game</title>
+<meta name="description" content="Jouez à SERPEX, le jeu de serpent multijoueur nouvelle génération ! Affrontez des joueurs du monde entier, débloquez des skins VIP, utilisez des boosts et skills, grimpez dans le classement mondial. 100% gratuit sur navigateur.">
+<meta name="keywords" content="jeu serpent multijoueur, snake game gratuit, slither.io français, jeu navigateur en ligne, serpex, battle royale serpent, boosts serpent, skills snake game">
+<meta name="robots" content="index, follow">
+<meta name="author" content="SERPEX — hervecaporale17@gmail.com">
+<link rel="canonical" href="https://serpex-game26.github.io/serpex/">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="google-site-verification" content="0975b490ab73a007">
+
+<!-- Open Graph -->
+<meta property="og:title" content="SERPEX — Jeu de Serpent Multijoueur Gratuit">
+<meta property="og:description" content="Le jeu de serpent multijoueur nouvelle génération. Boosts, skills, skins, Battle Royale. Gratuit sur navigateur.">
+<meta property="og:url" content="https://serpex-game26.github.io/serpex/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="SERPEX">
+<meta property="og:image" content="https://serpex-game26.github.io/serpex/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SERPEX - Jeu de serpent multijoueur en ligne">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SERPEX — Jeu de Serpent Multijoueur Gratuit">
+<meta name="twitter:description" content="Le jeu de serpent multijoueur nouvelle génération. Gratuit sur navigateur.">
+<meta name="twitter:image" content="https://serpex-game26.github.io/serpex/cover.jpg">
+
+<!-- Données structurées -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "SERPEX",
+  "description": "Jeu de serpent multijoueur en ligne nouvelle génération, gratuit sur navigateur",
+  "url": "https://serpex-game26.github.io/serpex/",
+  "genre": ["Action", "Multijoueur", "Arcade", "Battle Royale"],
+  "gamePlatform": "Navigateur Web",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@type": "Person", "name": "Hervé Caporale", "email": "hervecaporale17@gmail.com" }
+}
+</script>
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q04XKXKD2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9Q04XKXKD2');
+</script>
+
+<!-- Google Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied',
+    ad_personalization: 'denied', analytics_storage: 'denied',
+    functionality_storage: 'denied', personalization_storage: 'denied',
+    security_storage: 'granted', wait_for_update: 2000
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5433648295830648" crossorigin="anonymous"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+  --cyan: #00f5ff;
+  --pink: #ff006e;
+  --purple: #bf00ff;
+  --gold: #ffd700;
+  --green: #39ff14;
+  --orange: #ff6b00;
+  --bg: #05050f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Exo 2', sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+/* NAV */
+header {
+  background: rgba(5,5,15,0.96);
+  border-bottom: 1px solid rgba(0,245,255,0.12);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.logo-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyan), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+nav { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+nav a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem; font-family: 'Orbitron', monospace; white-space: nowrap; transition: color 0.2s; }
+nav a:hover { color: var(--cyan); }
+@media (max-width: 420px) {
+  nav a:not(.nav-play) { display: none; }
+  .logo-text { font-size: 1.1rem; }
+  header { padding: 0.7rem 1rem; }
+}
+
+/* HERO */
+.hero {
+  background: radial-gradient(ellipse at 30% 20%, #0d1a3a 0%, var(--bg) 65%),
+              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2300f5ff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  text-align: center;
+  padding: 3.5rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 80%, rgba(191,0,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyan), var(--pink), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { filter: drop-shadow(0 0 15px rgba(0,245,255,0.4)); }
+  to   { filter: drop-shadow(0 0 30px rgba(255,0,110,0.4)); }
+}
+.hero-sub { font-family: 'Orbitron', monospace; font-size: clamp(0.55rem, 2.5vw, 0.8rem); color: var(--gold); letter-spacing: 0.35em; margin-bottom: 1.5rem; opacity: 0.85; }
+.hero-desc { font-size: clamp(0.85rem, 2.5vw, 1rem); color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 560px; margin: 0 auto 2rem; }
+.hero-desc strong { color: var(--cyan); }
+.play-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--cyan), #0055ff);
+  border-radius: 14px;
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 0 40px rgba(0,245,255,0.35);
+  transition: box-shadow 0.2s, transform 0.15s;
+  letter-spacing: 0.05em;
+}
+.play-btn:hover { box-shadow: 0 0 60px rgba(0,245,255,0.55); transform: translateY(-2px); }
+.hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.badge { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.65rem; color: rgba(255,255,255,0.55); }
+
+/* LAYOUT */
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.2rem; }
+.ad-slot { margin: 2rem auto; max-width: 760px; padding: 0 1.2rem; text-align: center; }
+.ad-label { font-size: 0.55rem; color: rgba(255,255,255,0.2); letter-spacing: 0.2em; margin-bottom: 0.4rem; font-family: 'Orbitron', monospace; }
+.section { padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.section-tag { font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.3em; color: var(--cyan); margin-bottom: 0.5rem; opacity: 0.7; }
+.section h2 { font-family: 'Orbitron', monospace; font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.3; }
+.section p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.75; margin-bottom: 0.8rem; }
+
+/* CARDS GENERIQUES */
+.card { border-radius: 14px; padding: 1.1rem; }
+.fc-cyan   { background: rgba(0,245,255,0.06);   border: 1px solid rgba(0,245,255,0.2); }
+.fc-pink   { background: rgba(255,0,110,0.06);   border: 1px solid rgba(255,0,110,0.2); }
+.fc-purple { background: rgba(191,0,255,0.06);   border: 1px solid rgba(191,0,255,0.2); }
+.fc-gold   { background: rgba(255,215,0,0.06);   border: 1px solid rgba(255,215,0,0.2); }
+.fc-green  { background: rgba(57,255,20,0.06);   border: 1px solid rgba(57,255,20,0.2); }
+.fc-orange { background: rgba(255,107,0,0.06);   border: 1px solid rgba(255,107,0,0.2); }
+.fc-dim    { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+
+/* FEATURES GRID */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1.5rem; }
+.feature-card { border-radius: 14px; padding: 1.1rem; transition: transform 0.15s; }
+.feature-card:hover { transform: translateY(-3px); }
+.fc-icon  { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
+.fc-title { font-family: 'Orbitron', monospace; font-size: 0.65rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff; }
+.fc-desc  { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* BOOSTS */
+.boosts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.2rem; }
+.boost-card { border-radius: 14px; padding: 1.1rem 1.2rem; transition: transform 0.15s; }
+.boost-card:hover { transform: translateY(-3px); }
+.boost-header { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem; }
+.boost-icon { font-size: 1.6rem; flex-shrink: 0; }
+.boost-name { font-family: 'Orbitron', monospace; font-size: 0.68rem; font-weight: 900; color: #fff; }
+.boost-tag { font-size: 0.55rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem; letter-spacing: 0.1em; }
+.boost-effect { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 0.5rem; }
+.boost-stat { font-size: 0.65rem; font-family: 'Orbitron', monospace; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.2rem; }
+.skill-card { border-radius: 14px; padding: 1.1rem 1.2rem; transition: transform 0.15s; }
+.skill-card:hover { transform: translateY(-3px); }
+.skill-header { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
+.skill-icon { font-size: 1.5rem; }
+.skill-name { font-family: 'Orbitron', monospace; font-size: 0.68rem; font-weight: 900; color: #fff; }
+.skill-rarity { font-size: 0.52rem; letter-spacing: 0.12em; margin-top: 0.1rem; }
+.skill-desc { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 0.5rem; }
+.skill-cd { font-size: 0.62rem; color: rgba(255,255,255,0.35); font-family: 'Orbitron', monospace; }
+
+/* SKINS */
+.skins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; margin-top: 1.2rem; }
+.skin-card { border-radius: 12px; padding: 0.9rem 0.8rem; text-align: center; transition: transform 0.15s; }
+.skin-card:hover { transform: translateY(-3px); }
+.skin-preview { font-size: 2rem; margin-bottom: 0.4rem; display: block; }
+.skin-name { font-family: 'Orbitron', monospace; font-size: 0.6rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+.skin-unlock { font-size: 0.6rem; color: rgba(255,255,255,0.4); }
+
+/* HOW TO PLAY */
+.steps { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.2rem; }
+.step { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 0.9rem 1rem; }
+.step-num { font-family: 'Orbitron', monospace; font-size: 1.2rem; font-weight: 900; color: var(--cyan); opacity: 0.5; min-width: 28px; line-height: 1; }
+.step-text strong { color: #fff; display: block; font-size: 0.8rem; margin-bottom: 0.2rem; }
+.step-text span { font-size: 0.75rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* MODES */
+.modes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1.2rem; }
+.mode-card { border-radius: 14px; padding: 1.2rem 1rem; text-align: center; }
+.mode-icon  { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+.mode-title { font-family: 'Orbitron', monospace; font-size: 0.7rem; font-weight: 900; margin-bottom: 0.4rem; }
+.mode-desc  { font-size: 0.73rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* PROGRESSION */
+.prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1.2rem; }
+
+/* FAQ */
+.faq { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 0.9rem 1rem; }
+.faq-q { font-size: 0.82rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+.faq-a { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+.faq-a a { color: var(--cyan); }
+
+/* TIPS */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; margin-top: 1.2rem; }
+.tip-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 0.9rem 1rem; }
+.tip-num { font-family: 'Orbitron', monospace; font-size: 0.6rem; color: var(--gold); margin-bottom: 0.3rem; }
+.tip-text { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+/* CTA */
+.cta-bottom { background: linear-gradient(135deg, rgba(0,245,255,0.07), rgba(191,0,255,0.07)); border: 1px solid rgba(0,245,255,0.15); border-radius: 18px; padding: 2.5rem 1.5rem; text-align: center; margin: 2.5rem 0; }
+.cta-bottom h2 { font-family: 'Orbitron', monospace; font-size: clamp(1rem, 4vw, 1.5rem); font-weight: 900; margin-bottom: 0.7rem; }
+.cta-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+
+/* FOOTER */
+footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem 1.5rem; text-align: center; font-size: 0.65rem; color: rgba(255,255,255,0.25); }
+footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 0.5rem; transition: color 0.2s; }
+footer a:hover { color: var(--cyan); }
+.footer-links { margin-bottom: 0.8rem; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; margin-top: 1.2rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+th { font-family: 'Orbitron', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.4); text-align: left; padding: 0.5rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.td-name { font-weight: 600; color: #fff; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="serpex.html" class="logo-text">SERPEX</a>
+  <nav>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="serpex.html" class="nav-play" style="color:var(--cyan);border:1px solid var(--cyan);padding:0.3rem 0.7rem;border-radius:8px;">🎮 JOUER</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>SERPEX</h1>
+  <div class="hero-sub">⚡ NEXT GEN SNAKE ARENA ⚡</div>
+  <p class="hero-desc">
+    Le jeu de serpent multijoueur <strong>nouvelle génération</strong>. Affrontez des joueurs du monde entier en temps réel, dévorez des orbes, utilisez des <strong>boosts et skills puissants</strong>, éliminez vos adversaires et grimpez au sommet du <strong>classement mondial</strong>. Entièrement gratuit — aucune installation requise.
+  </p>
+  <a href="serpex.html" class="play-btn">⚡ JOUER GRATUITEMENT</a>
+  <div class="hero-badges">
+    <span class="badge">🆓 100% Gratuit</span>
+    <span class="badge">📱 Mobile & Desktop</span>
+    <span class="badge">🌍 Multijoueur mondial</span>
+    <span class="badge">🚀 Sans téléchargement</span>
+    <span class="badge">🏆 Classement en direct</span>
+    <span class="badge">⚡ Boosts & Skills</span>
+  </div>
+</div>
+
+<!-- AD SLOT 1 -->
+<div class="ad-slot">
+  <div class="ad-label">PUBLICITÉ</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5433648295830648"
+       data-ad-slot="5101438658"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="container">
+
+  <!-- PRÉSENTATION -->
+  <section class="section">
+    <div class="section-tag">▶ LE JEU</div>
+    <h2>Qu'est-ce que SERPEX ?</h2>
+    <p>SERPEX est un <strong style="color:var(--cyan);">jeu de serpent multijoueur en ligne</strong> jouable directement dans votre navigateur web, sans installation ni téléchargement. Inspiré des classiques du genre comme Slither.io, SERPEX va beaucoup plus loin avec un <strong style="color:var(--gold);">système complet de boosts, de skills actifs, de skins débloquables et de modes de jeu variés</strong>.</p>
+    <p>Connectez-vous, choisissez votre pseudo et votre skin, puis plongez immédiatement dans une arène remplie de joueurs réels du monde entier. Votre serpent grandit en mangeant des orbes lumineux. Coupez la route de vos adversaires pour les éliminer et récupérer leur masse. Survivez le plus longtemps possible et devenez le serpent dominant !</p>
+    <p>Le jeu est entièrement gratuit et financé par la publicité. Aucun achat n'est nécessaire pour profiter de l'expérience complète.</p>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="section">
+    <div class="section-tag">▶ FONCTIONNALITÉS</div>
+    <h2>Tout ce que SERPEX offre</h2>
+    <div class="features-grid">
+      <div class="feature-card fc-cyan">
+        <span class="fc-icon">🌍</span>
+        <div class="fc-title">MULTIJOUEUR EN TEMPS RÉEL</div>
+        <div class="fc-desc">Affrontez de vrais joueurs du monde entier synchronisés en temps réel via Supabase.</div>
+      </div>
+      <div class="feature-card fc-pink">
+        <span class="fc-icon">⚔️</span>
+        <div class="fc-title">MODE BATTLE ROYALE</div>
+        <div class="fc-desc">L'arène se rétrécit progressivement. Le dernier serpent survivant remporte victoire et récompenses exclusives.</div>
+      </div>
+      <div class="feature-card fc-purple">
+        <span class="fc-icon">🎨</span>
+        <div class="fc-title">30+ SKINS DÉBLOQUABLES</div>
+        <div class="fc-desc">Des dizaines de skins uniques à débloquer — néon, pixel, feu, glace, arc-en-ciel et bien plus.</div>
+      </div>
+      <div class="feature-card fc-gold">
+        <span class="fc-icon">👑</span>
+        <div class="fc-title">SYSTÈME VIP & BATTLE PASS</div>
+        <div class="fc-desc">Profitez d'avantages exclusifs VIP ou progressez dans le Battle Pass saisonnier.</div>
+      </div>
+      <div class="feature-card fc-green">
+        <span class="fc-icon">🏆</span>
+        <div class="fc-title">CLASSEMENT MONDIAL TOP 100</div>
+        <div class="fc-desc">Votre score est comparé en temps réel aux meilleurs joueurs mondiaux. Grimpez dans le top 100 !</div>
+      </div>
+      <div class="feature-card fc-cyan">
+        <span class="fc-icon">🎁</span>
+        <div class="fc-title">RÉCOMPENSES QUOTIDIENNES</div>
+        <div class="fc-desc">Connectez-vous chaque jour pour récupérer des coins et des récompenses exclusives.</div>
+      </div>
+      <div class="feature-card fc-pink">
+        <span class="fc-icon">👥</span>
+        <div class="fc-title">SYSTÈME D'AMIS</div>
+        <div class="fc-desc">Ajoutez vos amis, voyez leur statut en ligne et défiez-les dans l'arène.</div>
+      </div>
+      <div class="feature-card fc-orange">
+        <span class="fc-icon">⚡</span>
+        <div class="fc-title">BOOSTS & SKILLS ACTIFS</div>
+        <div class="fc-desc">Équipez jusqu'à 3 skills avant chaque partie. Boost, bouclier, aimant, frappe — créez votre build !</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<!-- AD SLOT 2 -->
+<div class="ad-slot">
+  <div class="ad-label">PUBLICITÉ</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5433648295830648"
+       data-ad-slot="5101438658"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BOOSTS                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-tag">▶ BOOSTS EN JEU</div>
+    <h2>Les Boosts — ramassez-les dans l'arène</h2>
+    <p>Des orbes spéciaux apparaissent aléatoirement dans l'arène. Passez dessus avec votre serpent pour activer instantanément leur effet. Ils ont une durée limitée et peuvent faire basculer une partie en quelques secondes !</p>
+
+    <div class="boosts-grid">
+
+      <div class="boost-card fc-cyan">
+        <div class="boost-header">
+          <span class="boost-icon">⚡</span>
+          <div>
+            <div class="boost-name">TURBO</div>
+            <div class="boost-tag">VITESSE · 8 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Double instantanément la vitesse de déplacement de votre serpent. Idéal pour fuir un adversaire ou couper la route d'une cible. Consomme un peu de masse à chaque usage.</div>
+        <div class="boost-stat" style="color:var(--cyan);">+100% vitesse · Masse consommée : faible</div>
+      </div>
+
+      <div class="boost-card fc-green">
+        <div class="boost-header">
+          <span class="boost-icon">🧲</span>
+          <div>
+            <div class="boost-name">AIMANT</div>
+            <div class="boost-tag">COLLECTE · 12 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Attire automatiquement tous les orbes dans un large rayon autour de votre tête. Parfait après avoir éliminé un gros adversaire pour absorber le maximum de sa masse rapidement.</div>
+        <div class="boost-stat" style="color:var(--green);">Rayon d'attraction : ×4 · Durée : 12s</div>
+      </div>
+
+      <div class="boost-card fc-purple">
+        <div class="boost-header">
+          <span class="boost-icon">🛡️</span>
+          <div>
+            <div class="boost-name">BOUCLIER</div>
+            <div class="boost-tag">PROTECTION · 6 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Entoure votre serpent d'un bouclier d'énergie qui annule la prochaine collision fatale. Vous pouvez traverser le corps d'un ennemi une fois sans mourir. Utilisez-le dans les zones denses.</div>
+        <div class="boost-stat" style="color:var(--purple);">1 collision annulée · Aura violette visible</div>
+      </div>
+
+      <div class="boost-card fc-gold">
+        <div class="boost-header">
+          <span class="boost-icon">✨</span>
+          <div>
+            <div class="boost-name">ORBE X2</div>
+            <div class="boost-tag">MULTIPLICATEUR · 10 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Double la valeur de chaque orbe mangé pendant la durée du boost. Combinez-le avec l'aimant pour une croissance explosive. C'est le boost le plus rare de l'arène.</div>
+        <div class="boost-stat" style="color:var(--gold);">×2 points par orbe · Effet doré visible</div>
+      </div>
+
+      <div class="boost-card fc-pink">
+        <div class="boost-header">
+          <span class="boost-icon">💀</span>
+          <div>
+            <div class="boost-name">FRAPPE FANTÔME</div>
+            <div class="boost-tag">ATTAQUE · Instantané</div>
+          </div>
+        </div>
+        <div class="boost-effect">Propulse votre tête en avant dans la direction actuelle à vitesse fulgurante. Si vous percutez un ennemi de face, il est éliminé instantanément. Très risqué, très récompensant.</div>
+        <div class="boost-stat" style="color:var(--pink);">Kill instantané · Risque élevé</div>
+      </div>
+
+      <div class="boost-card fc-orange">
+        <div class="boost-header">
+          <span class="boost-icon">🔥</span>
+          <div>
+            <div class="boost-name">TRAÎNÉE DE FEU</div>
+            <div class="boost-tag">ZONE · 7 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Laisse une traînée de flammes sur votre passage. Tout serpent ennemi qui touche cette traînée est ralenti. Utilisez-le pour créer des zones de contrôle ou piéger un adversaire dans un cercle.</div>
+        <div class="boost-stat" style="color:var(--orange);">Ralentit ennemis -50% · Durée traînée : 4s</div>
+      </div>
+
+      <div class="boost-card fc-cyan">
+        <div class="boost-header">
+          <span class="boost-icon">❄️</span>
+          <div>
+            <div class="boost-name">BLIZZARD</div>
+            <div class="boost-tag">ZONE · 5 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Gèle tous les adversaires dans un rayon moyen autour de vous pendant 2 secondes. Les serpents gelés ne peuvent plus bouger — parfait pour les encercler et les éliminer facilement.</div>
+        <div class="boost-stat" style="color:#a0f0ff;">Gel total 2s · Rayon : moyen</div>
+      </div>
+
+      <div class="boost-card fc-dim">
+        <div class="boost-header">
+          <span class="boost-icon">👻</span>
+          <div>
+            <div class="boost-name">INVISIBILITÉ</div>
+            <div class="boost-tag">FURTIVITÉ · 5 secondes</div>
+          </div>
+        </div>
+        <div class="boost-effect">Rend votre serpent presque invisible pour les autres joueurs pendant quelques secondes. Parfait pour tendre une embuscade ou pour fuir discrètement quand vous êtes encerclé.</div>
+        <div class="boost-stat" style="color:rgba(255,255,255,0.4);">Invisible aux ennemis · Semi-transparent pour vous</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SKILLS ACTIFS                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-tag">▶ SKILLS ACTIFS</div>
+    <h2>Les Skills — choisissez votre build avant la partie</h2>
+    <p>Avant chaque partie, vous pouvez équiper jusqu'à <strong style="color:var(--cyan);">3 skills actifs</strong> dans vos emplacements. Chaque skill s'active manuellement en appuyant sur les boutons dédiés (ou touches clavier). Ils ont chacun une durée de rechargement (cooldown). Construisez votre stratégie autour de vos skills !</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card fc-cyan">
+        <div class="skill-header">
+          <span class="skill-icon">⚡</span>
+          <div>
+            <div class="skill-name">SPRINT</div>
+            <div class="skill-rarity" style="color:var(--cyan);">COMMUN</div>
+          </div>
+        </div>
+        <div class="skill-desc">Active un sprint de vitesse pendant 4 secondes. Votre serpent se déplace 2× plus vite mais perd lentement de la masse pendant l'activation. Indispensable pour les débutants comme pour les pros.</div>
+        <div class="skill-cd">⏱ Cooldown : 8s · Masse consommée : faible</div>
+      </div>
+
+      <div class="skill-card fc-purple">
+        <div class="skill-header">
+          <span class="skill-icon">🛡️</span>
+          <div>
+            <div class="skill-name">BOUCLIER ACTIF</div>
+            <div class="skill-rarity" style="color:var(--purple);">RARE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Déploie un bouclier d'énergie qui absorbe la prochaine collision mortelle. Dure 6 secondes ou jusqu'à l'absorption. Parfait pour traverser des zones à fort trafic en sécurité.</div>
+        <div class="skill-cd">⏱ Cooldown : 20s · Durée : 6s max</div>
+      </div>
+
+      <div class="skill-card fc-green">
+        <div class="skill-header">
+          <span class="skill-icon">🧲</span>
+          <div>
+            <div class="skill-name">AIMANT PUISSANT</div>
+            <div class="skill-rarity" style="color:var(--green);">COMMUN</div>
+          </div>
+        </div>
+        <div class="skill-desc">Attire tous les orbes dans un grand rayon autour de vous pendant 8 secondes. Excellent pour grossir rapidement en début de partie ou pour récupérer la masse d'un ennemi éliminé.</div>
+        <div class="skill-cd">⏱ Cooldown : 15s · Durée : 8s</div>
+      </div>
+
+      <div class="skill-card fc-pink">
+        <div class="skill-header">
+          <span class="skill-icon">🌀</span>
+          <div>
+            <div class="skill-name">TOURBILLON</div>
+            <div class="skill-rarity" style="color:var(--pink);">ÉPIQUE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Fait tournoyer votre serpent sur lui-même en créant un vortex. Tout adversaire qui entre dans la zone est repoussé et désorienté. Crée aussi un piège redoutable si bien positionné.</div>
+        <div class="skill-cd">⏱ Cooldown : 25s · Zone d'effet : large</div>
+      </div>
+
+      <div class="skill-card fc-gold">
+        <div class="skill-header">
+          <span class="skill-icon">💣</span>
+          <div>
+            <div class="skill-name">EXPLOSION</div>
+            <div class="skill-rarity" style="color:var(--gold);">LÉGENDAIRE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Libère une onde de choc qui élimine instantanément tout serpent dans un rayon proche. Vous perdez 20% de votre masse en contrepartie. Le skill le plus dévastateur du jeu — à utiliser avec parcimonie.</div>
+        <div class="skill-cd">⏱ Cooldown : 45s · Coût : -20% masse</div>
+      </div>
+
+      <div class="skill-card fc-orange">
+        <div class="skill-header">
+          <span class="skill-icon">🔥</span>
+          <div>
+            <div class="skill-name">AURA DE FEU</div>
+            <div class="skill-rarity" style="color:var(--orange);">RARE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Enveloppe votre corps de flammes pendant 7 secondes. Tout serpent qui touche votre corps (et non votre tête) prend des dégâts et est ralenti. Transformez votre corps en arme.</div>
+        <div class="skill-cd">⏱ Cooldown : 18s · Durée : 7s</div>
+      </div>
+
+      <div class="skill-card fc-cyan">
+        <div class="skill-header">
+          <span class="skill-icon">🔮</span>
+          <div>
+            <div class="skill-name">TÉLÉPORTATION</div>
+            <div class="skill-rarity" style="color:#a0a0ff);">ÉPIQUE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Se téléporte instantanément 5 corps en avant dans la direction actuelle. Permet d'échapper à un encerclement ou de couper la route d'un ennemi par surprise. Le timing est crucial.</div>
+        <div class="skill-cd">⏱ Cooldown : 30s · Distance : 5 corps</div>
+      </div>
+
+      <div class="skill-card fc-dim">
+        <div class="skill-header">
+          <span class="skill-icon">🌫️</span>
+          <div>
+            <div class="skill-name">BROUILLARD</div>
+            <div class="skill-rarity" style="color:rgba(255,255,255,0.5);">RARE</div>
+          </div>
+        </div>
+        <div class="skill-desc">Crée un nuage de brouillard autour de vous qui masque votre position aux ennemis proches pendant 5 secondes. Les adversaires voient votre serpent flou et ne peuvent pas anticiper vos mouvements.</div>
+        <div class="skill-cd">⏱ Cooldown : 22s · Durée : 5s</div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:1.2rem;font-size:0.78rem;color:rgba(255,255,255,0.45);">💡 <strong style="color:rgba(255,255,255,0.6);">Conseil :</strong> Combinez Sprint + Aimant + Bouclier pour un build polyvalent en début de partie. Pour un style agressif, essayez Sprint + Explosion + Aura de Feu.</p>
+  </section>
+
+</div>
+
+<!-- AD SLOT 3 -->
+<div class="ad-slot">
+  <div class="ad-label">PUBLICITÉ</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5433648295830648"
+       data-ad-slot="5101438658"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="container">
+
+  <!-- SKINS -->
+  <section class="section">
+    <div class="section-tag">▶ SKINS & COSMÉTIQUES</div>
+    <h2>Plus de 30 skins à débloquer</h2>
+    <p>Chaque skin change l'apparence complète de votre serpent : couleurs, motifs, effets de particules. Ils sont purement cosmétiques et n'affectent pas le gameplay. Débloqués via la progression, le classement ou les récompenses quotidiennes.</p>
+
+    <div class="skins-grid">
+      <div class="skin-card fc-cyan">
+        <span class="skin-preview">🌊</span>
+        <div class="skin-name">NÉON CYAN</div>
+        <div class="skin-unlock">Départ</div>
+      </div>
+      <div class="skin-card fc-pink">
+        <span class="skin-preview">🌸</span>
+        <div class="skin-name">NÉON ROSE</div>
+        <div class="skin-unlock">Niveau 5</div>
+      </div>
+      <div class="skin-card fc-purple">
+        <span class="skin-preview">⚗️</span>
+        <div class="skin-name">VIOLET PLASMA</div>
+        <div class="skin-unlock">Niveau 10</div>
+      </div>
+      <div class="skin-card fc-gold">
+        <span class="skin-preview">✨</span>
+        <div class="skin-name">OR LÉGENDAIRE</div>
+        <div class="skin-unlock">Top 10</div>
+      </div>
+      <div class="skin-card fc-orange">
+        <span class="skin-preview">🔥</span>
+        <div class="skin-name">SERPENT DE FEU</div>
+        <div class="skin-unlock">50 kills</div>
+      </div>
+      <div class="skin-card" style="background:rgba(100,200,255,0.06);border:1px solid rgba(100,200,255,0.2);">
+        <span class="skin-preview">❄️</span>
+        <div class="skin-name">GLACE ARCTIQUE</div>
+        <div class="skin-unlock">Niveau 15</div>
+      </div>
+      <div class="skin-card fc-green">
+        <span class="skin-preview">☢️</span>
+        <div class="skin-name">RADIOACTIF</div>
+        <div class="skin-unlock">Niveau 20</div>
+      </div>
+      <div class="skin-card fc-dim">
+        <span class="skin-preview">🌈</span>
+        <div class="skin-name">ARC-EN-CIEL</div>
+        <div class="skin-unlock">Battle Pass</div>
+      </div>
+      <div class="skin-card fc-purple">
+        <span class="skin-preview">🎮</span>
+        <div class="skin-name">PIXEL 8-BIT</div>
+        <div class="skin-unlock">Niveau 25</div>
+      </div>
+      <div class="skin-card fc-gold">
+        <span class="skin-preview">👑</span>
+        <div class="skin-name">ROYAL VIP</div>
+        <div class="skin-unlock">VIP uniquement</div>
+      </div>
+      <div class="skin-card fc-pink">
+        <span class="skin-preview">🌌</span>
+        <div class="skin-name">GALAXIE</div>
+        <div class="skin-unlock">Top 1 mondial</div>
+      </div>
+      <div class="skin-card fc-dim">
+        <span class="skin-preview">💀</span>
+        <div class="skin-name">DARK REAPER</div>
+        <div class="skin-unlock">100 kills</div>
+      </div>
+    </div>
+
+    <p style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.4);">Et bien d'autres skins disponibles : Camouflage, Lava, Néon Vert, Chromé, Constellation, Zombie, Doré Antique, Dragon… Débloqués via les niveaux, le Battle Pass, le classement et les événements saisonniers.</p>
+  </section>
+
+  <!-- MODES DE JEU -->
+  <section class="section">
+    <div class="section-tag">▶ MODES DE JEU</div>
+    <h2>Trois façons de jouer</h2>
+    <div class="modes-grid">
+      <div class="mode-card fc-cyan">
+        <span class="mode-icon">⚡</span>
+        <div class="mode-title" style="color:var(--cyan);">MULTIJOUEUR</div>
+        <div class="mode-desc">Affrontez de vrais joueurs du monde entier dans une arène ouverte. Partez de zéro et grimpez dans le classement en éliminant vos adversaires. Mode principal de SERPEX.</div>
+      </div>
+      <div class="mode-card fc-dim">
+        <span class="mode-icon">🤖</span>
+        <div class="mode-title" style="color:rgba(255,255,255,0.7);">SOLO</div>
+        <div class="mode-desc">Affrontez des bots d'intelligence artificielle de difficulté progressive. Idéal pour maîtriser les mécaniques avant de jouer en ligne.</div>
+      </div>
+      <div class="mode-card fc-pink">
+        <span class="mode-icon">⚔️</span>
+        <div class="mode-title" style="color:var(--pink);">BATTLE ROYALE</div>
+        <div class="mode-desc">L'arène se rétrécit progressivement. Le dernier serpent survivant remporte la victoire, des coins bonus et XP supplémentaire. Mode le plus compétitif.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO PLAY -->
+  <section class="section">
+    <div class="section-tag">▶ TUTORIEL</div>
+    <h2>Comment jouer à SERPEX ?</h2>
+    <p>SERPEX est facile à prendre en main mais difficile à maîtriser. Voici les bases pour bien démarrer :</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-text">
+          <strong>Créez votre compte gratuitement</strong>
+          <span>Inscrivez-vous en quelques secondes avec votre e-mail. Choisissez votre pseudo et votre premier skin. Vous pouvez aussi jouer en mode invité sans inscription.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-text">
+          <strong>Choisissez votre mode et équipez vos skills</strong>
+          <span>Sélectionnez votre mode de jeu (Multijoueur, Solo ou Battle Royale) et équipez jusqu'à 3 skills actifs dans vos emplacements. Construisez votre stratégie avant de lancer la partie.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-text">
+          <strong>Contrôlez votre serpent</strong>
+          <span>Sur mobile : utilisez le joystick tactile en bas à gauche. Sur desktop : déplacez la souris pour diriger. Le serpent suit votre curseur automatiquement.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-text">
+          <strong>Mangez pour grandir</strong>
+          <span>Dévorez les orbes lumineux dispersés dans l'arène pour grossir. Plus votre serpent est long, plus votre score augmente et plus vous avez d'influence dans l'arène.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <div class="step-text">
+          <strong>Éliminez vos adversaires</strong>
+          <span>Coupez la route d'un adversaire pour le forcer à percuter votre corps. À sa mort, il laisse une traînée d'orbes que vous pouvez absorber immédiatement.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">06</span>
+        <div class="step-text">
+          <strong>Activez vos skills et ramassez les boosts</strong>
+          <span>Utilisez vos skills actifs avec les boutons en bas de l'écran (ou touches 1, 2, 3 sur desktop). Gardez un œil sur les orbes spéciaux dans l'arène pour déclencher les boosts automatiques.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESSION -->
+  <section class="section">
+    <div class="section-tag">▶ PROGRESSION</div>
+    <h2>Système de progression et récompenses</h2>
+    <p>SERPEX dispose d'un système de progression profond qui récompense les joueurs réguliers et les plus compétitifs :</p>
+    <div class="prog-grid">
+      <div class="feature-card fc-gold">
+        <span class="fc-icon">⭐</span>
+        <div class="fc-title">NIVEAUX & XP</div>
+        <div class="fc-desc">Gagnez de l'XP à chaque partie. Chaque nouveau niveau débloque des skins, des emplacements de skills supplémentaires ou des récompenses en coins.</div>
+      </div>
+      <div class="feature-card fc-cyan">
+        <span class="fc-icon">🪙</span>
+        <div class="fc-title">COINS EN JEU</div>
+        <div class="fc-desc">Gagnez des coins en jouant, en terminant dans les premières places ou via les récompenses quotidiennes. Utilisez-les pour débloquer des skins dans la boutique.</div>
+      </div>
+      <div class="feature-card fc-purple">
+        <span class="fc-icon">🎫</span>
+        <div class="fc-title">BATTLE PASS</div>
+        <div class="fc-desc">Un Battle Pass saisonnier avec des dizaines de récompenses exclusives : skins rares, effets de particules, titres uniques. Se débloque par la progression normale.</div>
+      </div>
+      <div class="feature-card fc-pink">
+        <span class="fc-icon">📅</span>
+        <div class="fc-title">QUÊTES QUOTIDIENNES</div>
+        <div class="fc-desc">Chaque jour, de nouvelles quêtes apparaissent : "Atteignez 5000 de longueur", "Éliminez 3 adversaires", etc. Accomplissez-les pour gagner des coins et XP bonus.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSEILS DE PRO -->
+  <section class="section">
+    <div class="section-tag">▶ CONSEILS AVANCÉS</div>
+    <h2>Astuces pour devenir un pro</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 01</div>
+        <div class="tip-text">En début de partie, restez en périphérie de l'arène pour éviter les confrontations. Grossissez tranquillement en mangeant les orbes libres avant d'attaquer.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 02</div>
+        <div class="tip-text">La technique du cercle : encerclez un petit serpent en spirale pour le forcer à percuter votre corps. C'est la méthode la plus efficace pour éliminer sans risque.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 03</div>
+        <div class="tip-text">Gardez votre skill Bouclier pour les moments critiques, pas pour les situations ordinaires. Il peut sauver votre partie entière dans une situation d'urgence.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 04</div>
+        <div class="tip-text">Combinez le boost Aimant avec le multiplicateur Orbe ×2 pour une phase de croissance ultra-rapide. Ces deux boosts ensemble en 10 secondes peuvent tripler votre taille.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 05</div>
+        <div class="tip-text">En Battle Royale, la zone rétrécissante force les serpents à se regrouper. Anticipez les mouvements et positionnez-vous à la limite de la zone pour piéger ceux qui fuient vers le centre.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">ASTUCE 06</div>
+        <div class="tip-text">Si vous êtes très grand, utilisez votre longueur comme avantage défensif en formant des barrières naturelles. Les petits serpents ne peuvent pas vous encercler si vous êtes plus grand qu'eux.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-tag">▶ FAQ</div>
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">🆓 SERPEX est-il vraiment gratuit ?</div>
+        <div class="faq-a">Oui, SERPEX est entièrement gratuit. Le jeu est financé par la publicité Google AdSense. Aucun achat obligatoire — les skins et items cosmétiques peuvent être obtenus gratuitement via la progression en jeu.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">📱 Peut-on jouer sur téléphone ?</div>
+        <div class="faq-a">Oui ! SERPEX est entièrement optimisé pour mobile avec un joystick tactile intégré. Il fonctionne sur Chrome, Safari et Firefox sur Android et iOS. Aucune application à télécharger.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">⚡ Comment débloquer de nouveaux skills ?</div>
+        <div class="faq-a">Les skills se débloquent en progressant dans les niveaux. Certains skills rares (Explosion, Téléportation) nécessitent d'atteindre des niveaux plus élevés ou de compléter des défis spécifiques.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">🌍 Le multijoueur est-il vraiment en temps réel ?</div>
+        <div class="faq-a">Oui. SERPEX utilise Supabase pour synchroniser les positions et actions de tous les joueurs en temps réel. Vous affrontez de vrais joueurs connectés simultanément.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">🔄 Les boosts apparaissent-ils aléatoirement ?</div>
+        <div class="faq-a">Oui, les boosts apparaissent à des positions et moments aléatoires dans l'arène. Leur fréquence d'apparition dépend du nombre de joueurs présents. Les boosts rares (×2, Invisibilité) apparaissent moins souvent.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">🏆 Comment fonctionne le classement mondial ?</div>
+        <div class="faq-a">Le classement mondial affiche les 100 meilleurs scores. Il est mis à jour en temps réel après chaque partie. Votre score est calculé en fonction de votre taille maximale, du nombre d'éliminations et du mode de jeu.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">🔒 Mes données personnelles sont-elles protégées ?</div>
+        <div class="faq-a">SERPEX collecte uniquement votre e-mail et pseudo pour l'authentification. Ces données sont stockées de façon sécurisée via Supabase, conforme au RGPD. Consultez notre <a href="privacy.html">politique de confidentialité</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-bottom">
+    <h2>Prêt à rejoindre l'arène ?</h2>
+    <p>Rejoignez des milliers de joueurs dès maintenant. Gratuit, sans installation, disponible sur tous vos appareils.</p>
+    <a href="serpex.html" class="play-btn">🐍 JOUER À SERPEX — GRATUIT</a>
+  </div>
+
+  <!-- SEO texte -->
+  <section class="section" style="border-top:1px solid rgba(255,255,255,0.04);">
+    <div class="section-tag">▶ EN SAVOIR PLUS</div>
+    <h2 style="font-size:1rem;color:rgba(255,255,255,0.5);">Le meilleur jeu de serpent multijoueur gratuit</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:0.78rem;">SERPEX est un jeu de serpent multijoueur inspiré de Slither.io, entièrement gratuit et jouable sur navigateur. Contrairement à d'autres jeux du genre, SERPEX propose un système de progression complet avec des niveaux, des skins exclusifs, un Battle Pass saisonnier, un système de boosts en arène, des skills actifs à équiper avant chaque partie et un classement mondial.</p>
+    <p style="color:rgba(255,255,255,0.4);font-size:0.78rem;">Disponible sans téléchargement sur Chrome, Firefox, Safari et Edge, SERPEX est accessible depuis n'importe quel appareil : smartphone, tablette ou ordinateur. Le jeu est hébergé sur GitHub Pages et utilise Supabase pour la synchronisation des données en temps réel.</p>
+  </section>
+
+</div>
+
+<!-- AD SLOT FINAL -->
+<div class="ad-slot">
+  <div class="ad-label">PUBLICITÉ</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5433648295830648"
+       data-ad-slot="5101438658"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="serpex.html">🎮 Jouer</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Confidentialité</a>
+    <a href="terms.html">CGU</a>
+        <a href="mailto:hervecaporale17@gmail.com">✉️ Contact</a>
+  </div>
+  <div style="font-size:0.5rem;color:rgba(255,255,255,0.15);font-family:'Orbitron',monospace;margin-top:0.3rem;">© 2026 SERPEX · Hervé Caporale · Tous droits réservés</div>
+</footer>
+
+</body>
+</html>
